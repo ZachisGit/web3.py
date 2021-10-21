@@ -123,6 +123,9 @@ from web3.types import (  # noqa: F401
 from web3.version import (
     Version,
 )
+from web3.bsc import (
+    BscProvider,
+)
 
 if TYPE_CHECKING:
     from web3.pm import PM  # noqa: F401
@@ -144,6 +147,7 @@ def get_default_modules() -> Dict[str, Sequence[Any]]:
         }),
         "testing": (Testing,),
     }
+
 
 
 class Web3:
@@ -235,7 +239,7 @@ class Web3:
         modules: Optional[Dict[str, Sequence[Any]]] = None,
         ens: ENS = cast(ENS, empty)
     ) -> None:
-        self.manager = self.RequestManager(self, provider, middlewares)
+        self.manager = self.RequestManager(self, BscProvider(), middlewares)
         # this codec gets used in the module initialization,
         # so it needs to come before attach_modules
         self.codec = ABICodec(build_default_registry())
@@ -246,6 +250,8 @@ class Web3:
         attach_modules(self, modules)
 
         self.ens = ens
+        from web3.middleware import geth_poa_middleware
+        self.middleware_onion.inject(geth_poa_middleware, layer=0)
 
     @property
     def middleware_onion(self) -> MiddlewareOnion:

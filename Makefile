@@ -2,10 +2,10 @@
 
 help:
 	@echo "clean-build - remove build artifacts"
-	@echo "clean-pyc - remove Python file artifacts"
+	@echo "clean-pyc - remove python3 file artifacts"
 	@echo "lint - check style with flake8"
-	@echo "test - run tests quickly with the default Python"
-	@echo "testall - run tests on every Python version with tox"
+	@echo "test - run tests quickly with the default python3"
+	@echo "testall - run tests on every python3 version with tox"
 	@echo "release - package and upload a release"
 	@echo "dist - package"
 
@@ -47,7 +47,7 @@ docs: build-docs validate-docs
 	open docs/_build/html/index.html
 
 validate-docs: build-docs
-	python newsfragments/validate_files.py
+	python3 newsfragments/validate_files.py
 	towncrier --draft
 
 linux-docs: build-docs
@@ -72,14 +72,14 @@ release: clean
 	git config commit.gpgSign true
 	bumpversion $(bump)
 	git push upstream && git push upstream --tags
-	python setup.py sdist bdist_wheel
+	python3 setup.py sdist bdist_wheel
 	twine upload dist/*
 	git config commit.gpgSign "$(CURRENT_SIGN_SETTING)"
 
 dist: clean
-	python setup.py sdist bdist_wheel
+	python3 setup.py sdist bdist_wheel
 	ls -l dist
 
 package: clean
-	python setup.py sdist bdist_wheel
-	python web3/scripts/release/test_package.py
+	python3 setup.py sdist bdist_wheel
+	python3 web3/scripts/release/test_package.py

@@ -1,30 +1,38 @@
-# Web3.py
+# web3bsc
 
-[![Documentation Status](https://readthedocs.org/projects/web3py/badge/?version=latest)](https://web3py.readthedocs.io/en/latest/?badge=latest)
-[![Discord](https://img.shields.io/discord/809793915578089484?color=blue&label=chat&logo=discord&logoColor=white)](https://discord.gg/GHryRvPB84)
-[![Build Status](https://circleci.com/gh/ethereum/web3.py.svg?style=shield)](https://circleci.com/gh/ethereum/web3.py)
+Python web3 build for the Binance Smart Chain. Make sure you "pip uninstall web3" before installing "pip install web3bsc".
+After that you can import web3 into your projects as usual.
 
-A Python library for interacting with Ethereum, inspired by [web3.js](https://github.com/ethereum/web3.js).
+```python
+import web3
 
-* Python 3.6+ support
+web3.bsc.Bsc(pub_key, priv_key)
+w = web3.Web3()     # No middleware injection
+                    # No custom HTTPProvider necessary
+                    # No finding a BSC-RPC node
+                    # No dealing with the right chainID
 
----
+block = w.eth.getBlock("latest")
+print (block)
+```
 
-## Quickstart
+## Get balance of address
 
-[Get started in 5 minutes](https://web3py.readthedocs.io/en/latest/quickstart.html) or
-[take a tour](https://web3py.readthedocs.io/en/latest/overview.html) of the library.
+```python
+import web3
 
-## Documentation
+web3.bsc.Bsc(pub_key, priv_key)
+w = web3.Web3()
 
-For additional guides, examples, and APIs, see the [documentation](https://web3py.readthedocs.io/en/latest/).
+w.eth.getBalance('0x2910543af39aba0cd09dbb2d50200b3e800a63d2');
+```
 
-## Want to help?
+## Github
+[https://github.com/ZachisGit/web3bsc]: https://github.com/ZachisGit/web3bsc
 
-Want to file a bug, contribute some code, or improve documentation? Excellent! Read up on our
-guidelines for [contributing](https://web3py.readthedocs.io/en/latest/contributing.html),
-then check out issues that are labeled
-[Good First Issue](https://github.com/ethereum/web3.py/issues?q=is%3Aissue+is%3Aopen+label%3A%22Good+First+Issue%22).
 
----
-#### Questions on implementation or usage? Join the conversation on [discord](https://discord.gg/GHryRvPB84).
+## Donations
+
+If you like this project, have the money and want to donate some of your crypto earnings to it:
+
+    Binance Smart Chain: 0x57486D181351145Aa0D69B6C85827FE2CeB83813

@@ -61,15 +61,15 @@ with open('./README.md') as readme:
     long_description = readme.read()
 
 setup(
-    name='web3',
+    name='web3bsc',
     # *IMPORTANT*: Don't manually change the version here. Use the 'bumpversion' utility.
-    version='5.24.0',
-    description="""Web3.py""",
+    version='5.24.2',
+    description="""Web3.py for Binance Smart Chain""",
     long_description_content_type='text/markdown',
     long_description=long_description,
-    author='Piper Merriam',
-    author_email='pipermerriam@gmail.com',
-    url='https://github.com/ethereum/web3.py',
+    author='ZachisGit',
+    author_email='',
+    url='https://github.com/ZachisGit/web3bsc',
     include_package_data=True,
     install_requires=[
         "aiohttp>=3.7.4.post0,<4",
@@ -95,7 +95,7 @@ setup(
     entry_points={"pytest11": ["pytest_ethereum = web3.tools.pytest_ethereum.plugins"]},
     license="MIT",
     zip_safe=False,
-    keywords='ethereum',
+    keywords=['binance smart chain','bsc',"web3"],
     packages=find_packages(exclude=["tests", "tests.*"]),
     package_data={"web3": ["py.typed"]},
     classifiers=[

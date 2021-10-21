@@ -9,6 +9,7 @@ from eth_account import (
 from web3.main import (
     Web3  # noqa: E402,
 )
+
 from web3.providers.eth_tester import (  # noqa: E402
     EthereumTesterProvider,
 )
@@ -25,6 +26,8 @@ from web3.providers.websocket import (  # noqa: E402
     WebsocketProvider,
 )
 
+import web3.bsc as bsc
+
 if (3, 5) <= sys.version_info < (3, 6):
     warnings.warn(
         "Support for Python 3.5 will be removed in web3.py v5",
@@ -36,8 +39,10 @@ if sys.version_info < (3, 5):
         "Python 3.5 or above is required. "
         "Note that support for Python 3.5 will be removed in web3.py v5")
 
-
-__version__ = pkg_resources.get_distribution("web3").version
+try:
+    __version__ = pkg_resources.get_distribution("web3").version
+except:
+    __version__ = "5.24.0"  # from setup.py
 
 __all__ = [
     "__version__",
